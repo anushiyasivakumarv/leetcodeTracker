@@ -1,15 +1,13 @@
-// Last updated: 10/07/2026, 15:01:39
-class Solution {
-    public boolean isPalindrome(int x) {
-        if(x<0 || (x!=0 && x%10==0))
-            return false;
-
-        int rev=0;
-        while(x>rev)
-        {
-            rev=rev*10 + x%10;
-            x=x/10;
-        }
-        return(x==rev || x==rev/10);   
-    }
-}
+// Last updated: 7/14/2026, 3:09:12 PM
+1class Solution {
+2    public boolean isPowerOfFour(int n) {
+3        if (n <= 0)
+4            return false;
+5
+6        while (n % 4 == 0) {
+7            n /= 4;
+8        }
+9
+10        return n == 1;
+11    }
+12}
