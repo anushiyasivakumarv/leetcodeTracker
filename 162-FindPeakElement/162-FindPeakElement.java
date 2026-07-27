@@ -1,31 +1,21 @@
-// Last updated: 27/07/2026, 14:42:15
+// Last updated: 27/07/2026, 14:53:38
 1class Solution {
-2    public int findPeakElement(int[] nums) {
-3        int n = nums.length;
-4
-5        if (n == 1) return 0;
-6
-7        int l = 0;
-8        int r = n - 1;
-9
-10        while (l <= r) {
-11            int mid = l + (r - l) / 2;
-12            
-13            boolean leftOk = (mid == 0) || (nums[mid] > nums[mid - 1]);
-14            boolean rightOk = (mid == n - 1) || (nums[mid] > nums[mid + 1]);
-15
-16            if (leftOk && rightOk) {
-17                return mid;
-18            }
-19
-20            
-21            if (mid < n - 1 && nums[mid] < nums[mid + 1]) {
-22                l = mid + 1;
-23            } else {
-24                r = mid - 1;
-25            }
-26        }
-27
-28        return -1;
-29    }
-30}
+2    public int maxProduct(int[] nums) {
+3        int max=nums[0];
+4        int min=nums[0];
+5        int result=nums[0];
+6        for(int i=1;i<nums.length;i++)
+7        {
+8            if(nums[i]<0)
+9            {
+10                int temp=max;
+11                max=min;
+12                min=temp;
+13            }
+14            max=Math.max(nums[i],nums[i]*max);
+15            min=Math.min(nums[i],nums[i]*min);
+16            result=Math.max(result,max);
+17        }
+18        return result;
+19    }
+20}
