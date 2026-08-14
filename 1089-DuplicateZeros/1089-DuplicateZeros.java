@@ -1,19 +1,28 @@
-// Last updated: 8/14/2026, 5:38:49 PM
+// Last updated: 8/14/2026, 5:42:29 PM
 1class Solution {
-2    public void duplicateZeros(int[] arr) {
-3        int length = arr.length;
+2    public int dayOfYear(String date) {
+3        int[] days = {31,28,31,30,31,30,31,31,30,31,30,31};
 4
-5        for (int i = 0; i < length ; i++)
-6        {
-7            if (arr[i] == 0 && i+1 < length)
-8            {
-9                for (int j = length - 1; j > i+1; j--)
-10                {
-11                    arr[j] = arr[j-1];
-12                }
-13                arr[i+1] = 0;
-14                i++;
-15            }
-16        }
-17    }
-18}
+5        int year = Integer.parseInt(date.substring(0,4));
+6        int month= Integer.parseInt(date.substring(5,7));
+7        int day  = Integer.parseInt(date.substring(8,10));
+8
+9        if (isLeap(year))
+10        {
+11            days[1]=29;
+12
+13        }
+14        int total=0;
+15        for(int i=0;i<month-1;i++)
+16        {
+17            total += days[i];
+18        }
+19        total += day;
+20
+21        return total;
+22    }
+23    boolean isLeap(int year)
+24    {
+25        return (year%4 == 0 && year %100!=0 ) || (year % 400 ==0);
+26    }
+27}
