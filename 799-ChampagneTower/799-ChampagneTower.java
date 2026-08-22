@@ -1,4 +1,4 @@
-// Last updated: 8/22/2026, 5:39:55 PM
+// Last updated: 8/22/2026, 5:55:22 PM
 1class Solution {
 2    public String breakPalindrome(String palindrome) {
 3        if(palindrome.length() == 0 || palindrome.length() == 1){
