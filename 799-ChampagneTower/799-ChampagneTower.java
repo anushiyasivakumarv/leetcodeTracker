@@ -1,29 +1,18 @@
-// Last updated: 8/22/2026, 5:36:46 PM
+// Last updated: 8/22/2026, 5:39:55 PM
 1class Solution {
-2    public boolean isPossibleDivide(int[] nums, int k) {
-3        if (nums.length % k != 0) {
-4            return false;
+2    public String breakPalindrome(String palindrome) {
+3        if(palindrome.length() == 0 || palindrome.length() == 1){
+4            return "";
 5        }
-6
-7        Map<Integer, Integer> map = new HashMap<>();
-8        for (int num : nums) {
-9            map.put(num, map.getOrDefault(num, 0) + 1);
-10        }
-11
-12        Arrays.sort(nums);
-13
-14        for (int num : nums) {
-15            if (map.get(num) > 0) {
-16                for (int i = num + 1; i < num + k; i++) {
-17                    if (map.getOrDefault(i, 0) == 0) {
-18                        return false;
-19                    }
-20                    map.put(i, map.get(i) - 1);
-21                }
-22                map.put(num, map.get(num) - 1);
-23            }
-24        }
-25
-26        return true;
-27    }
-28}
+6        char[] ch = palindrome.toCharArray();
+7        for(int i = 0;i<ch.length/2;i++){
+8            if(ch[i]-'a' != 0){
+9                ch[i] = 'a';
+10                return new String(ch);
+11            }
+12            
+13        }
+14        ch[ch.length-1] = 'b';
+15        return new String(ch);
+16    }
+17}
