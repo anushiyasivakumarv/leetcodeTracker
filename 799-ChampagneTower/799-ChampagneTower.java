@@ -1,24 +1,28 @@
-// Last updated: 8/22/2026, 4:20:03 PM
+// Last updated: 8/22/2026, 4:25:54 PM
 1class Solution {
-2    public int maxNumberOfBalloons(String text) {
-3        int[] fr = new int[26];
-4
-5        for (char ch : text.toCharArray()) {
-6            fr[ch - 'a']++;
-7        }
-8
-9        String balloon = "balloon";
-10        int count = 0;
-11
-12        while (true) {
-13            
-14            for (char ch : balloon.toCharArray()) {
-15                if (fr[ch - 'a'] == 0) {
-16                    return count;
-17                }
-18                fr[ch - 'a']--;
-19            }
-20            count++;
-21        }
-22    }
-23}
+2    public int nthUglyNumber(int n, int a, int b, int c) {
+3        int left = 1;
+4        int right = Integer.MAX_VALUE;
+5        int count = 0;
+6        while (left < right) {
+7            int middle = left + (right - left) / 2;
+8            if (isUgly(middle, a, b, c, n)) {
+9                right = middle;
+10            }
+11            else
+12                left = middle + 1;
+13        }
+14        return left;
+15    }
+16    public boolean isUgly(long middle, long a, long b, long c, long n) {
+17        return (int) (middle/a + middle/b + middle/c - middle/lcm(a, b) - middle/lcm(b, c) - middle/lcm(c, a) + middle/lcm(a, lcm(b, c))) >= n;
+18    }
+19    public long gcd(long a, long b) {
+20        if (a == 0)
+21            return b;
+22        else return gcd(b%a, a);
+23    }
+24    public long lcm(long a, long b) {
+25        return a * b / (gcd(a, b)); 
+26    }
+27}
