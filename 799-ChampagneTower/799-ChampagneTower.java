@@ -1,4 +1,4 @@
-// Last updated: 8/22/2026, 4:25:54 PM
+// Last updated: 8/22/2026, 4:26:48 PM
 1class Solution {
 2    public int nthUglyNumber(int n, int a, int b, int c) {
 3        int left = 1;
